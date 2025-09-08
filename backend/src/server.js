@@ -1,18 +1,16 @@
- import express from "express" 
- import "dotenv/config"
+ import express from "express";
+ import authRoutes from "./routes/auth.route.js"; 
+ import "dotenv/config";
  
 
  const app = express();
 
 const PORT = process.env.PORT; 
 
- app.get("/api/auth/signup", (req, res) => {
-    res.send("Signup Route");
- })
+;
 
-    app.get("/api/auth/login", (req, res) => {
-    res.send("Login Route");
- });
+
+ app.use("/api/auth", authRoutes);
 
 
  app.listen (PORT, () => {
