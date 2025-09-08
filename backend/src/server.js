@@ -8,7 +8,6 @@ import { connectDB } from "./lib/db.js";
 
 const PORT = process.env.PORT; 
 
-;
 
 
  app.use("/api/auth", authRoutes);
