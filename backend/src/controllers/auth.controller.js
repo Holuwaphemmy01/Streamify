@@ -4,6 +4,8 @@ import jwt from "jsonwebtoken";
 export async function signup(req, res) {
    const {email, password, fullName} = req.body;
    try {
+      
+
       if(!email || !password || !fullName){
          return res.status(400).json({message: "All fields are required"});
       }
@@ -23,14 +25,16 @@ export async function signup(req, res) {
 
       const index = Math.floor(Math.random() * 10) + 1;
       const randomAvatar = `https://avatar.iran.liara.run/public/${index}.png`;
-      const newUser = new User.create({
+      const newUser = await User.create({
          fullName,
          email,
          password,
          profilePic: randomAvatar,
       });
 
-      const token = jwt.sign({userId:newUser._id}, 
+
+
+      const token = jwt.sign({userId:newUser._id},
          process.env.JWT_SECRET, {expiresIn: "1d"});
 
       res.cookie("jwt", token, {
@@ -47,7 +51,8 @@ export async function signup(req, res) {
       });
 
    } catch (error) {
-      
+      console.log("Error occurred during signup:", error);
+      res.status(500).json({ message: "Internal server error" });
    }
    
 }
