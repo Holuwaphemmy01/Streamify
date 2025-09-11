@@ -119,3 +119,17 @@ export async function getFriendRequests(req, res) {
         res.status(500).json({ success: false, message: "Error fetching friend requests" });
     }
 }
+
+
+export async function getOutgoingFriendRequests(req, res) {
+    try {
+        const outgoingRequests = await FriendRequest.find({
+            sender: req.user._id,
+            status: "pending"
+        }).populate("recipient", "fullName profilePic nativeLanguage learningLanguage");
+        res.status(200).json(outgoingRequests);
+    } catch (error) {
+        console.error("Error fetching outgoing friend requests:", error.message);
+        res.status(500).json({ success: false, message: "Error fetching outgoing friend requests" });
+    }
+}
