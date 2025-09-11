@@ -3,6 +3,9 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/Login'
 import SignUpPage from './pages/SignUpPage'
 import OnboardingPage from './pages/OnboardingPage'
+import NotificationPage from './pages/NotificationPage'
+import CallPage from './pages/CallPage'
+import ChatPage from './pages/ChatPage'
 import { Route, Routes } from 'react-router'
 
 const App = () => {
@@ -13,8 +16,13 @@ const App = () => {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/onboarding" element={<OnboardingPage/>} />
+        <Route path="/notifications" element={<NotificationPage/>} />
+        <Route path="/calls" element={<CallPage/>} />
+        <Route path="/chats" element={<ChatPage/>} />
       </Routes>
-      <h1 className='text-center'>Welcome to Streamify</h1>
+      <footer className='text-center p-4'>
+        <p>&copy; 2023 Streamify. All rights reserved.</p>
+      </footer>
     </div>
   )
 }
