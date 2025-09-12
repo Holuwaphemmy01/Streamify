@@ -16,10 +16,10 @@ const App = () => {
     const {data: authData, isLoading, isError} = useQuery({
     queryKey: ['authUser'],
     queryFn: async () => {
-      const response = await axiosInstance.get('/auth/user/me');
+      const response = await axiosInstance.get('/auth/me');
       return response.data;
     },
-    retry: 1, // Retry once on failure
+    retry: false, // Retry once on failure
     })
     const authUser = authData?.user;
 
