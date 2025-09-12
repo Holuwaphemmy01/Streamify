@@ -7,10 +7,12 @@ import NotificationPage from './pages/NotificationPage'
 import CallPage from './pages/CallPage'
 import ChatPage from './pages/ChatPage'
 import { Route, Routes } from 'react-router'
+import { Toaster, toast } from 'react-hot-toast'
 
 const App = () => {
   return (
     <div className='h-screen ' data-theme="night">
+      <button onClick={() => toast.error('Button clicked!')}>Show Toast</button>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage/>} />
@@ -20,9 +22,7 @@ const App = () => {
         <Route path="/calls" element={<CallPage/>} />
         <Route path="/chats" element={<ChatPage/>} />
       </Routes>
-      <footer className='text-center p-4'>
-        <p>&copy; 2023 Streamify. All rights reserved.</p>
-      </footer>
+      <Toaster />
     </div>
   )
 }
