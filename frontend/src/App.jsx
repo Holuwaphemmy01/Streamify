@@ -17,14 +17,18 @@ const App = () => {
     const {isLoading, authUser}= useAuthUser();
 
     const isAuthenticated = Boolean(authUser);
-    const isOnboarded = authUser?.isOnboarded
+    const isOnboarded = authUser?.isOnboarded;
 
     if(isLoading) return <PageLoader/>
 
   return (
     <div className='h-screen ' data-theme="night">
       <Routes>
-        <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />} />
+        <Route path="/" element={isAuthenticated  && isOnboarded ? (
+          <HomePage/>
+        ): (
+          <Navigate to={!isAuthenticated ? "/login" : "/onboarding"}/>
+    )} />
         <Route path="/login" element={!isAuthenticated ? <LoginPage/> : <Navigate to="/" />} />
         <Route path="/signup" element={!isAuthenticated ? <SignUpPage/> : <Navigate to="/" />} />
         <Route path="/onboarding" element={isAuthenticated ? <OnboardingPage/> : <Navigate to="/login" />} />
