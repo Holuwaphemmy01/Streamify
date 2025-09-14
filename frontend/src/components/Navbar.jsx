@@ -2,7 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import useAuthUser from "../hooks/useAuthUser"
 import {useLocation, Link} from "react-router"
 import { logout } from "../lib/api";
-import {BellIcon} from "lucide-react"
+import {BellIcon, LogOutIcon} from "lucide-react"
+import ThemeSelector from "./ThemeSelector";
 
 const Navbar = () => {
 
@@ -39,6 +40,17 @@ const Navbar = () => {
                 </button>
               </Link>
             </div>
+            <ThemeSelector/>
+
+            <div className="avatar">
+              <div className="w-9 rounded-full">
+                <img src={authUser.profilePic} alt="User Avatar" rel="noreferrer"/>
+              </div>
+            </div>  
+            {/*LOGOUT BUTTON*/}
+            <button className="btn btn-ghost btn-circle" onClick={logoutMutation}>
+              <LogOutIcon className="h-6 w-6 text-base-content opacity-70"/>
+            </button>          
         </div>
 
       </div>
