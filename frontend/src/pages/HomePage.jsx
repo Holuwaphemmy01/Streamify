@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 import { useThemeStore } from "../store/useThemeStore";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getRecommendedUsers, getUserFriends, getOutgoingFriendReqs, sendFriendRequest } from "../lib/api";
-import {UsersIcon, MapPinIcon, UserPlusIcon} from "lucide-react"
+import {UsersIcon, MapPinIcon, UserPlusIcon, CheckCircleIcon} from "lucide-react"
 import {Link} from "react-router"
 import FriendCard from "../components/FriendCard";
 import NoFriendsFound from "./NoFriendsFound";
 import { getLanguageFlag } from "../components/FriendCard";
-import { LANGUAGE_TO_FLAG } from "../constants";
 
 
 const HomePage = () => {
@@ -41,7 +40,7 @@ const HomePage = () => {
       const outgoingIds = new Set();
       if(outgoingFriendReqs && outgoingFriendReqs.length > 0){
         outgoingFriendReqs.forEach(element => {
-          outgoingIds.add(element.id)
+          outgoingIds.add(element.recipient._id);
         })
         setOutgoingRequestIds(outgoingIds);
       }
