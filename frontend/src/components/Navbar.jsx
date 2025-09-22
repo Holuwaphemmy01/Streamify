@@ -3,6 +3,7 @@ import {useLocation, Link} from "react-router"
 import {BellIcon, LogOutIcon} from "lucide-react"
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
+import { ShipWheelIcon } from "lucide-react";
 
 const Navbar = () => {
 

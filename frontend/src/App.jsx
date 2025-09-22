@@ -1,4 +1,3 @@
-import React from 'react'
 import HomePage from './pages/HomePage'
 import LoginPage from './pages/Login'
 import SignUpPage from './pages/SignUpPage'
@@ -38,7 +37,16 @@ const App = () => {
         <Route path="/login" element={!isAuthenticated ? <LoginPage/> : <Navigate to={isOnboarded ? "/" : "/onboarding"} />} />
         <Route path="/signup" element={!isAuthenticated ? <SignUpPage/> : <Navigate to={isOnboarded ? "/" : "/onboarding"} />} />
         <Route path="/calls" element={isAuthenticated ? <CallPage/> : <Navigate to="/login" />} />
-        <Route path="/chats" element={isAuthenticated ? <ChatPage/> : <Navigate to="/login" />} />
+        <Route path="/chat/:id" 
+        element={
+          isAuthenticated && isOnboarded ? (
+            <Layout showSidebar={false}>
+              <ChatPage/>
+            </Layout>
+          ) : (
+            <Navigate to={!isAuthenticated ? "/login" : "/onboarding"}/>
+          )
+        }/>
         <Route 
           path="/onboarding" 
           element={
