@@ -13,6 +13,8 @@ import {
 import {StreamChat} from "stream-chat";
 import toast from 'react-hot-toast';
 import ChatLoader from '../components/ChatLoader';
+import { useQuery } from '@tanstack/react-query';
+import { getStreamToken } from '../lib/api';
 
 
 const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY
@@ -38,11 +40,12 @@ const ChatPage = () => {
       try {
         console.log("initializing stream chat client...");
         const client = StreamChat.getInstance(STREAM_API_KEY);
+        console.log(authUser);
         await client.connectUser({
           id: authUser._id, 
           name: authUser.fullName, 
           image: authUser.profilePic, 
-        }, tokenData.token);
+        }, tokenData.token)
 
         const channelId = [authUser._id, targetUserId].sort().join("_");
 
@@ -78,8 +81,7 @@ const ChatPage = () => {
             </Window>
           </div>
         </Channel>
-      </Chat>
-
+      </Chat> 
     </div>
   )
 }

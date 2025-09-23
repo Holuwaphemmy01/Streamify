@@ -4,7 +4,7 @@ import { getAuthUser } from '../lib/api';
 
 const useAuthUsers = () => {
   const authUser = useQuery({
-    queryKey: ['authUser'],
+    queryKey: ["authUser"],
     queryFn: getAuthUser,
     retry: false, // Retry once on failure
     });
