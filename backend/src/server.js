@@ -26,18 +26,18 @@ app.use("/api/users", userRoutes);
 
 app.use("/api/chat", chatRoutes);
 
-app.get("/", (req, res)=> {
+
+   let results;
+ app.listen (PORT, (req, res) => {
+    console.log(`Server is running on port ${PORT}`);
+     results = connectDB();
+
+ })
+
+
+ app.get("/", (req, res)=> {
   res.status(200).json({
-      "Connected":"Hello World"
+      "Connected":`Hello World ${results}`, 
   })
 })
 
- app.listen (PORT, (req, res) => {
-    console.log(`Server is running on port ${PORT}`);
-    let result = connectDB();
-
-    res.status(200).json({
-      "":`${result}`,
-    })
-
- })
