@@ -26,8 +26,10 @@ app.use("/api/users", userRoutes);
 
 app.use("/api/chat", chatRoutes);
 
-app.get("/", ()=> {
-  return "Hello world"
+app.get("/", (req, res)=> {
+  res.status(200).json({
+      "Connected":"Hello World"
+  })
 })
 
  app.listen (PORT, () => {
