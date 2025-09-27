@@ -11,12 +11,16 @@ export const connectDB =async () =>{
   serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
   bufferMaxEntries: 0, // Disable mongoose buffering
   bufferCommands: false, // Disable mongoose buffering
-});
-        console.log(`MongoDB connected: ${conn.connection.host}`);
+}).then(()=> {
+    console.log(`MongoDB connected: ${conn.connection.host}`);
+})
+        
 
     } catch (error) {
         console.error(`Error connecting to MongoDB: ${error.message}`);
-        process.exit(1); //
+        console.log(`Error connecting to MongoDB: ${error.message}`);
+        
+        //process.exit(1); //
     }
 
 }
