@@ -32,7 +32,12 @@ app.get("/", (req, res)=> {
   })
 })
 
- app.listen (PORT, () => {
+ app.listen (PORT, (req, res) => {
     console.log(`Server is running on port ${PORT}`);
-    connectDB();
+    let result = connectDB();
+
+    res.status(200).json({
+      "":`${result}`,
+    })
+
  })
