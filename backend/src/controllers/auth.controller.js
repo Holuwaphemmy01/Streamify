@@ -103,7 +103,7 @@ export async function login(req, res) {
       res.status(500).json({ message: "Internal server error" });
    }
 }
-
+//update
 export async function logout(req, res) {
    res.clearCookie("jwt");
    res.status(200).json({message: "Logout successful"});
