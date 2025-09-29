@@ -33,10 +33,26 @@ app.use("/api/chat", chatRoutes);
  });
 
 
- app.get("/", (req, res)=> {
-  if(result === undefined) {res.status(500).json({"newResult":"Database not working"})};
-  res.status(200).json({
-      "Connected":`Streamify Backend Working`, 
-  })
-})
+//  app.get("/", (req, res)=> {
+//   if(result === undefined) {res.status(500).json({"newResult":"Database not working"})};
+//  else{res.status(200).json({
+//       "Connected":`Streamify Backend Working`, 
+//   })
+// })}
 
+
+app.get("/", (req, res) => {
+  // Check mongoose connection state instead of a variable
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(500).json({
+      status: "error",
+      message: "Database not connected"
+    });
+  } else {
+    return res.status(200).json({
+      status: "success",
+      message: "Streamify Backend Working",
+      database: "connected"
+    });
+  }
+});
