@@ -27,32 +27,15 @@ app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
 
-  let result;
+  const result = connectDB();
  app.listen (PORT, (req, res) => {
     console.log(`Server is running on port ${PORT}`);
  });
-connectDB();
+
 
  app.get("/", (req, res)=> {
-  if(result === undefined) {res.status(500).json({"newResult":"Database not working"})}
+  if(result === undefined) {res.status(500).json({message:"Database not working"})}
   else{res.status(200).json({
     message: "Streamify Backend and Mongo Database connected successfully"
   })}
  });
-
-
-// app.get("/", (req, res) => {
-//   // Check mongoose connection state instead of a variable
-//   if (mongoose.connection.readyState !== 1) {
-//     return res.status(500).json({
-//       status: "error",
-//       message: "Database not connected"
-//     });
-//   } else {
-//     return res.status(200).json({
-//       status: "success",
-//       message: "Streamify Backend Working",
-//       database: "connected"
-//     });
-//   }
-// });
