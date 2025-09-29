@@ -27,15 +27,16 @@ app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
 
-   let results = connectDB();
+  //const result = connectDB();
  app.listen (PORT, (req, res) => {
     console.log(`Server is running on port ${PORT}`);
  });
 
 
  app.get("/", (req, res)=> {
+  if(result === undefined) {res.status(500).json({"newResult":"Database not working"})};
   res.status(200).json({
-      "Connected":`Hello World ${results}`, 
+      "Connected":`Streamify Backend Working`, 
   })
 })
 
