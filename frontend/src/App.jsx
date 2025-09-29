@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast'
 import { Navigate } from 'react-router'
 import PageLoader from './components/PageLoader'
 import useAuthUser from './hooks/useAuthUser'
-import Layout from './components/layout.jsx'
+import Layout from './components/Layout.jsx'
 import { useThemeStore } from './store/useThemeStore.js'
 const App = () => {
 
