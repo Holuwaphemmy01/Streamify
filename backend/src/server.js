@@ -20,11 +20,11 @@
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
 
-app.use("/api/users", userRoutes);
+app.use("/users", userRoutes);
 
-app.use("/api/chat", chatRoutes);
+app.use("/chat", chatRoutes);
 
 
   const result = connectDB();
