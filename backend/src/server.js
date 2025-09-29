@@ -13,7 +13,7 @@
  const PORT = process.env.PORT; 
 
    app.use(cors({
-     origin: "http://localhost:5173",
+     origin: "https://streamify-jfol.vercel.app/",
      credentials: true, // allow frontend to send cookies
    }));
 
